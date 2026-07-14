@@ -144,10 +144,10 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 @keyframes bounce{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,10px);}}
 
 /* Slider */
-.slider-section{background:var(--cream-50);padding:70px 0;}
-.slider{position:relative;max-width:1180px;margin:0 auto;padding:0 24px;}
+.slider-section{background:var(--cream-50);padding:40px 0;}
+.slider{position:relative;width:100%;}
 .slider__viewport{
-  position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);
+  position:relative;overflow:hidden;
   background:var(--white);
 }
 .slide{display:none;}
