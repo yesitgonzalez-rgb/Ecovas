@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=6">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
 
@@ -60,13 +60,16 @@
     <span class="badge">🌱 100% Ecológico &amp; Biodegradable</span>
     <h1>El poder de limpiar. <span>El héroe de tu hogar.</span></h1>
     <p>ECOVAS MULTIUSOS limpia, desmancha y restaura en 186 usos distintos, sin químicos agresivos, sin guantes ni tapabocas. Ideal para tu hogar y tu sitio de trabajo.</p>
-    <div class="hero__cta">
-      <a href="#multiusos" class="btn btn--primary">Descubrir ECOVAS Multiusos</a>
-      <a href="https://wa.me/573103336061?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20ECOVAS%20MULTIUSOS" target="_blank" rel="noopener" class="btn btn--whatsapp">Pedir por WhatsApp</a>
-    </div>
   </div>
   <a href="#slider" class="hero__scroll" aria-label="Bajar">↓</a>
 </section>
+
+<div class="hero-cta-bar">
+  <div class="container hero__cta">
+    <a href="#multiusos" class="btn btn--primary">Descubrir ECOVAS Multiusos</a>
+    <a href="https://wa.me/573103336061?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20ECOVAS%20MULTIUSOS" target="_blank" rel="noopener" class="btn btn--whatsapp">Pedir por WhatsApp</a>
+  </div>
+</div>
 
 <section class="slider-section" id="slider">
   <div class="slider">
@@ -415,22 +418,24 @@
         <button class="bot-panel__close" id="botClose" aria-label="Cerrar asistente">×</button>
       </div>
       <div class="bot-panel__body">
-        <p class="bot-panel__msg">¡Hola! 👋 Te damos la bienvenida a ECOVAS. ¿Sobre qué producto te gustaría que te asesoremos?</p>
-        <div class="bot-panel__options">
-          <a class="bot-option" href="https://wa.me/573103336061?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20ECOVAS%20Multiusos" target="_blank" rel="noopener">
-            <span class="bot-option__icon">🧴</span> ECOVAS Multiusos
-          </a>
-          <a class="bot-option" href="https://wa.me/573103336061?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20Producto%20Hogar" target="_blank" rel="noopener">
-            <span class="bot-option__icon">🏠</span> Producto Hogar
-          </a>
-          <a class="bot-option" href="https://wa.me/573103336061?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20Producto%20Oficina" target="_blank" rel="noopener">
-            <span class="bot-option__icon">🏢</span> Producto Oficina
-          </a>
-          <a class="bot-option" href="https://wa.me/573103336061?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20Producto%20Est%C3%A9tico" target="_blank" rel="noopener">
-            <span class="bot-option__icon">✨</span> Producto Estético
-          </a>
+        <div class="bot-panel__messages" id="botMessages">
+          <p class="bot-msg bot-msg--bot">¡Hola! 👋 Te damos la bienvenida a ECOVAS. ¿Sobre qué producto te gustaría que te asesoremos?</p>
         </div>
-        <a class="bot-panel__cta" href="https://wa.me/573103336061" target="_blank" rel="noopener">Escribir directamente por WhatsApp</a>
+        <div class="bot-panel__options" id="botOptions">
+          <button type="button" class="bot-option" data-topic="multiusos">
+            <span class="bot-option__icon">🧴</span> ECOVAS Multiusos
+          </button>
+          <button type="button" class="bot-option" data-topic="hogar">
+            <span class="bot-option__icon">🏠</span> Producto Hogar
+          </button>
+          <button type="button" class="bot-option" data-topic="oficina">
+            <span class="bot-option__icon">🏢</span> Producto Oficina
+          </button>
+          <button type="button" class="bot-option" data-topic="estetico">
+            <span class="bot-option__icon">✨</span> Producto Estético
+          </button>
+        </div>
+        <a class="bot-panel__cta" id="botCta" href="https://wa.me/573103336061" target="_blank" rel="noopener">Escribir directamente por WhatsApp</a>
       </div>
     </div>
 
@@ -455,6 +460,6 @@
   </a>
 </div>
 
-<script src="assets/js/script.js?v=4"></script>
+<script src="assets/js/script.js?v=5"></script>
 </body>
 </html>

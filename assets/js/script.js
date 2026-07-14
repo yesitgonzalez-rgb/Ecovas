@@ -106,6 +106,55 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') toggleBot(false);
 });
 
+/* Conversacion del Bot */
+const botTopics = {
+  multiusos: {
+    label: 'ECOVAS Multiusos',
+    reply: '¡Excelente elección! ECOVAS Multiusos tiene 186 usos en distintas superficies, es 100% biodegradable y no necesitas guantes ni tapabocas. ¿Seguimos por WhatsApp para ver presentaciones y precios?',
+    waText: 'Hola, quiero saber más sobre ECOVAS Multiusos'
+  },
+  hogar: {
+    label: 'Producto Hogar',
+    reply: '¡Excelente elección! ECOVAS para tu hogar limpia baños, cocina y pisos de forma segura para toda la familia, sin químicos agresivos. ¿Seguimos por WhatsApp?',
+    waText: 'Hola, quiero saber más sobre el Producto Hogar'
+  },
+  oficina: {
+    label: 'Producto Oficina',
+    reply: '¡Excelente elección! Nuestra presentación de 20 litros rinde 186 usos, ideal para reducir costos de aseo en tu empresa o negocio. ¿Seguimos por WhatsApp?',
+    waText: 'Hola, quiero saber más sobre el Producto Oficina'
+  },
+  estetico: {
+    label: 'Producto Estético',
+    reply: 'Estamos preparando esta línea con el mismo compromiso ecológico de ECOVAS. Escríbenos por WhatsApp y serás de los primeros en enterarte cuando esté disponible.',
+    waText: 'Hola, quiero saber más sobre el Producto Estético'
+  }
+};
+
+const botMessages = document.getElementById('botMessages');
+const botCta = document.getElementById('botCta');
+
+function addBotMessage(text, who) {
+  const msg = document.createElement('p');
+  msg.className = `bot-msg bot-msg--${who}`;
+  msg.textContent = text;
+  botMessages.appendChild(msg);
+  botMessages.scrollTop = botMessages.scrollHeight;
+}
+
+document.querySelectorAll('.bot-option[data-topic]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const topic = botTopics[btn.dataset.topic];
+    document.querySelectorAll('.bot-option').forEach(b => b.classList.remove('is-selected'));
+    btn.classList.add('is-selected');
+
+    addBotMessage(topic.label, 'user');
+    addBotMessage(topic.reply, 'bot');
+
+    botCta.href = `https://wa.me/573103336061?text=${encodeURIComponent(topic.waText)}`;
+    botCta.textContent = `Continuar por WhatsApp`;
+  });
+});
+
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', e => {
