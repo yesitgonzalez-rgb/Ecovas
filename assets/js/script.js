@@ -16,7 +16,7 @@ nav.querySelectorAll('a').forEach(link => {
 const heroVideo = document.getElementById('heroVideo');
 heroVideo.addEventListener('error', () => { heroVideo.style.display = 'none'; }, true);
 
-const track = document.getElementById('sliderTrack');
+const track = document.getElementById('sliderViewport');
 const slides = Array.from(track.querySelectorAll('.slide'));
 const dotsWrap = document.getElementById('sliderDots');
 const prevBtn = document.getElementById('prevSlide');
