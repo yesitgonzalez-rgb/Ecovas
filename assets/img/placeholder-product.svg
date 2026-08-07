@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" role="img" aria-label="Imagen de producto pendiente de carga">
+  <defs>
+    <linearGradient id="pp" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6fbfb"/>
+      <stop offset="1" stop-color="#e9f8f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#pp)"/>
+  <g transform="translate(600 520)">
+    <path d="M0 -150 C 90 -40, 130 20, 130 70 A 130 130 0 1 1 -130 70 C -130 20, -90 -40, 0 -150 Z"
+          fill="#3cb521" opacity="0.85"/>
+    <path d="M0 -150 C 90 -40, 130 20, 130 70 A 130 130 0 0 1 0 200 Z" fill="#00a8b8" opacity="0.55"/>
+  </g>
+  <g fill="#4a5d5c" font-family="Poppins, Segoe UI, sans-serif" text-anchor="middle">
+    <text x="600" y="830" font-size="52" font-weight="700">1200 × 1200 px</text>
+    <text x="600" y="900" font-size="38" opacity="0.7">Relación 1:1</text>
+  </g>
+</svg>

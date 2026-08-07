@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="Banner pendiente de carga">
+  <defs>
+    <linearGradient id="pb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b3d0f"/>
+      <stop offset="0.55" stop-color="#1f8a2e"/>
+      <stop offset="1" stop-color="#00a8b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#pb)"/>
+  <g opacity="0.10" fill="#ffffff">
+    <circle cx="300" cy="250" r="180"/>
+    <circle cx="1650" cy="880" r="230"/>
+    <circle cx="1500" cy="180" r="90"/>
+  </g>
+  <g fill="#ffffff" font-family="Poppins, Segoe UI, sans-serif" text-anchor="middle">
+    <text x="960" y="520" font-size="58" font-weight="700" letter-spacing="2">BANNER PREMIUM</text>
+    <text x="960" y="600" font-size="38" opacity="0.75">1920 × 1080 px — 16:9</text>
+    <text x="960" y="668" font-size="26" opacity="0.55">Reemplazar por la imagen definitiva de la línea</text>
+  </g>
+</svg>

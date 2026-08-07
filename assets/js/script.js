@@ -13,63 +13,151 @@ nav.querySelectorAll('a').forEach(link => {
   });
 });
 
-const heroVideo = document.getElementById('heroVideo');
-heroVideo.addEventListener('error', () => { heroVideo.style.display = 'none'; }, true);
+// Mega menu "Productos": mismo patron toggle/click-afuera/Escape que ya
+// usa el widget del bot (ver botWidget mas abajo), reutilizado tal cual.
+const megaTrigger = document.getElementById('megaTrigger');
+const megaBtn = document.getElementById('megaBtn');
+const megaMenu = document.getElementById('megaMenu');
 
-const track = document.getElementById('sliderViewport');
-const slides = Array.from(track.querySelectorAll('.slide'));
-const dotsWrap = document.getElementById('sliderDots');
-const prevBtn = document.getElementById('prevSlide');
-const nextBtn = document.getElementById('nextSlide');
-let current = 0;
-let autoplayTimer;
+function toggleMega(open) {
+  const isOpen = open !== undefined ? open : megaMenu.hidden;
+  megaTrigger.classList.toggle('is-open', isOpen);
+  megaBtn.setAttribute('aria-expanded', String(isOpen));
+  megaMenu.hidden = !isOpen;
+}
 
-slides.forEach((_, i) => {
-  const dot = document.createElement('button');
-  dot.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
-  dot.addEventListener('click', () => goToSlide(i));
-  dotsWrap.appendChild(dot);
+megaBtn.addEventListener('click', () => toggleMega());
+
+document.addEventListener('click', e => {
+  if (!megaMenu.hidden && !megaTrigger.contains(e.target)) {
+    toggleMega(false);
+  }
 });
-const dots = Array.from(dotsWrap.children);
 
-function goToSlide(index) {
-  slides[current].classList.remove('is-active');
-  dots[current].classList.remove('is-active');
-  current = (index + slides.length) % slides.length;
-  slides[current].classList.add('is-active');
-  dots[current].classList.add('is-active');
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') toggleMega(false);
+});
+
+megaMenu.querySelectorAll('.mega-menu__item').forEach(item => {
+  item.addEventListener('click', () => toggleMega(false));
+});
+
+// Boton de sonido del video "Nuestro Heroe". A diferencia del hero original
+// (arriba del todo), esta seccion vive mas abajo en la pagina: no tiene
+// sentido desmutear con el primer gesto en cualquier parte del sitio, asi
+// que el sonido solo se activa con un clic explicito en el boton.
+const heroeVideo = document.getElementById('heroeVideo');
+const heroeSound = document.getElementById('heroeSound');
+if (heroeVideo && heroeSound) {
+  function heroeHasAudioTrack(v) {
+    if (v.audioTracks) return v.audioTracks.length > 0;
+    if (typeof v.mozHasAudio === 'boolean') return v.mozHasAudio;
+    if (typeof v.webkitAudioDecodedByteCount === 'number') return v.webkitAudioDecodedByteCount > 0;
+    return true;
+  }
+
+  function renderHeroeSoundUI() {
+    const on = !heroeVideo.muted;
+    heroeSound.classList.toggle('is-on', on);
+    heroeSound.setAttribute('aria-pressed', String(on));
+    heroeSound.setAttribute('aria-label', on ? 'Silenciar el video' : 'Activar sonido del video');
+    heroeSound.querySelector('.hero__sound-label').textContent = on ? 'Silenciar' : 'Activar sonido';
+  }
+
+  heroeSound.addEventListener('click', () => {
+    const turningOn = heroeVideo.muted;
+    heroeVideo.muted = !turningOn;
+    if (turningOn) heroeVideo.volume = 1;
+    renderHeroeSoundUI();
+    heroeVideo.play().catch(() => { heroeVideo.muted = true; renderHeroeSoundUI(); });
+  });
+
+  heroeVideo.addEventListener('playing', () => {
+    setTimeout(() => { heroeSound.hidden = !heroeHasAudioTrack(heroeVideo); }, 500);
+  }, { once: true });
+
+  // El video vive varias secciones mas abajo: sin "autoplay" ni preload en
+  // el HTML para no competir por el hilo principal con la carga inicial.
+  // Solo empieza a cargar y reproducirse cuando la seccion esta por entrar
+  // en pantalla.
+  const heroeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        heroeVideo.preload = 'auto';
+        heroeVideo.play().catch(() => {});
+        heroeObserver.unobserve(heroeVideo);
+      }
+    });
+  }, { rootMargin: '200px' });
+  heroeObserver.observe(heroeVideo);
+}
+
+// Motor de slider reutilizable: misma logica que ya usaba el slider del
+// hero, ahora parametrizada por ids para poder montar mas de una instancia
+// (ej. el slider "Antes y Despues") sin duplicar codigo.
+function initSlider(viewportId, dotsId, prevId, nextId) {
+  const track = document.getElementById(viewportId);
+  const dotsWrap = document.getElementById(dotsId);
+  const prevBtn = document.getElementById(prevId);
+  const nextBtn = document.getElementById(nextId);
+  if (!track || !dotsWrap || !prevBtn || !nextBtn) return;
+
+  const slides = Array.from(track.querySelectorAll('.slide'));
+  let current = 0;
+  let autoplayTimer;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function goToSlide(index) {
+    slides[current].classList.remove('is-active');
+    dots[current].classList.remove('is-active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('is-active');
+    dots[current].classList.add('is-active');
+    resetAutoplay();
+  }
+
+  function nextSlide() { goToSlide(current + 1); }
+  function prevSlide() { goToSlide(current - 1); }
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(nextSlide, 5000);
+  }
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  goToSlide(0);
   resetAutoplay();
+
+  let touchStartX = 0;
+  track.parentElement.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  track.parentElement.addEventListener('touchend', e => {
+    const delta = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(delta) > 50) delta < 0 ? nextSlide() : prevSlide();
+  }, { passive: true });
 }
 
-function nextSlide() { goToSlide(current + 1); }
-function prevSlide() { goToSlide(current - 1); }
-
-function resetAutoplay() {
-  clearInterval(autoplayTimer);
-  autoplayTimer = setInterval(nextSlide, 5000);
-}
-
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
-
-goToSlide(0);
-resetAutoplay();
-
-let touchStartX = 0;
-track.parentElement.addEventListener('touchstart', e => {
-  touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
-track.parentElement.addEventListener('touchend', e => {
-  const delta = e.changedTouches[0].screenX - touchStartX;
-  if (Math.abs(delta) > 50) delta < 0 ? nextSlide() : prevSlide();
-}, { passive: true });
+initSlider('sliderViewport', 'sliderDots', 'prevSlide', 'nextSlide');
+initSlider('adSliderViewport', 'adSliderDots', 'adPrevSlide', 'adNextSlide');
+// Reutilizable para Empresas/Industria: initSlider('empresasSliderViewport', ...).
+initSlider('hogarSliderViewport', 'hogarSliderDots', 'hogarPrevSlide', 'hogarNextSlide');
 
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
   header.classList.toggle('is-scrolled', window.scrollY > 20);
 }, { passive: true });
 
-const revealTargets = document.querySelectorAll('.section, .feel-card, .product-card, .slide__content');
+const revealTargets = document.querySelectorAll('.section, .feel-card, .product-card, .cat-card, .slide__content');
 revealTargets.forEach(el => el.classList.add('reveal'));
 
 const observer = new IntersectionObserver(entries => {
@@ -82,6 +170,28 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 
 revealTargets.forEach(el => observer.observe(el));
+
+// Scroll-spy: marca .is-active en el link de nav (incluidas las
+// categorias del mega menu) de la seccion visible. Observer independiente
+// del de .reveal, no lo modifica.
+const navLinksByTarget = {};
+document.querySelectorAll('[data-nav-link]').forEach(link => {
+  const id = link.dataset.navLink;
+  if (id && id !== 'top') navLinksByTarget[id] = link;
+});
+const spyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const link = navLinksByTarget[entry.target.id];
+    if (!link) return;
+    Object.values(navLinksByTarget).forEach(l => l.classList.remove('is-active'));
+    link.classList.add('is-active');
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+Object.keys(navLinksByTarget).forEach(id => {
+  const section = document.getElementById(id);
+  if (section) spyObserver.observe(section);
+});
 
 const botWidget = document.getElementById('botWidget');
 const botLauncher = document.getElementById('botLauncher');
