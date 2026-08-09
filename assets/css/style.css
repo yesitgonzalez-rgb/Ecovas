@@ -24,7 +24,7 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;scroll-padding-top:132px;}
 
 body{
   font-family:var(--font-body);
@@ -100,29 +100,29 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
   background:none;border:none;cursor:pointer;padding:4px 0;
   position:relative;transition:color .2s;
 }
-.nav__mega-btn:hover{color:var(--green-600);}
+.nav__mega-btn:hover,.nav__mega-btn.is-active{color:var(--green-600);}
 .nav__mega-caret{transition:transform .2s;flex-shrink:0;}
 .nav__item--mega.is-open .nav__mega-caret{transform:rotate(180deg);}
 .nav__item--mega.is-open .nav__mega-btn{color:var(--green-600);}
 
-/* Panel del mega menu (desktop: dropdown flotante; mobile: acordeon dentro
-   del mismo drawer, ver el @media de abajo). */
+/* Dropdown de "Productos": lista simple de texto (desktop: panel flotante
+   angosto; mobile: acordeon dentro del mismo drawer, ver el @media de abajo). */
 .mega-menu{
-  position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%);
-  width:min(860px,90vw);
+  position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+  width:260px;
   background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-md);
-  padding:22px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+  padding:10px;display:flex;flex-direction:column;gap:2px;
   z-index:150;
 }
 .mega-menu[hidden]{display:none;}
 .mega-menu__item{
-  display:flex;flex-direction:column;gap:10px;text-align:left;
-  border-radius:14px;padding:10px;transition:background .2s;
+  display:block;text-align:left;
+  border-radius:10px;padding:13px 16px;
+  border-left:3px solid transparent;
+  transition:background .2s, border-color .2s;
 }
-.mega-menu__item:hover{background:var(--cream-100);}
-.mega-menu__img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;display:block;background:var(--cream-50);}
-.mega-menu__title{font-family:var(--font-head);font-weight:700;font-size:.92rem;color:var(--green-900);}
-.mega-menu__desc{font-size:.8rem;color:var(--text-600);line-height:1.4;}
+.mega-menu__item:hover,.mega-menu__item:focus-visible{background:var(--cream-100);border-left-color:var(--green-600);}
+.mega-menu__title{font-family:var(--font-head);font-weight:700;font-size:.95rem;color:var(--green-900);letter-spacing:.01em;}
 
 .header__actions{display:flex;align-items:center;gap:16px;}
 
@@ -196,13 +196,14 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 
 /* Slider */
 .slider-section{background:var(--cream-50);padding:40px 0;}
-.slider{position:relative;width:100%;}
+.slider{position:relative;width:100%;max-width:1440px;margin:0 auto;}
 .slider__viewport{
   position:relative;overflow:hidden;
   /* Relacion fija (comparten Hogar/Empresas/Industrias 1) para que el alto
      nunca cambie entre slides: un aspect-ratio dinamico desplazaria todo el
-     contenido debajo del slider cada vez que cambia el banner activo. */
-  aspect-ratio:2200/764;
+     contenido debajo del slider cada vez que cambia el banner activo.
+     Tamano Premium: maximo 1440x500 en desktop (3:1), centrado. */
+  aspect-ratio:1440/500;
   background:var(--white);
 }
 /* Variante contenida (no full-bleed): proporcion real de las fotos
@@ -364,7 +365,8 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 .cart-modal__body{flex:1;overflow-y:auto;padding:18px 22px;}
 .cart-empty{color:var(--text-600);font-size:.92rem;}
 .cart-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #f0f4f1;}
-.cart-item__info{display:flex;flex-direction:column;gap:2px;}
+.cart-item__img{width:48px;height:48px;object-fit:contain;background:var(--cream-50);border-radius:8px;flex-shrink:0;}
+.cart-item__info{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0;}
 .cart-item__info strong{font-size:.9rem;}
 .cart-item__info span{font-size:.82rem;color:var(--text-600);}
 .cart-item__remove{background:none;border:none;font-size:1.3rem;color:var(--text-600);cursor:pointer;flex-shrink:0;}
@@ -377,6 +379,8 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 
 /* Product grid */
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.product-grid--2{grid-template-columns:repeat(2,1fr);max-width:700px;margin:0 auto;}
+.product-grid--1{grid-template-columns:1fr;max-width:380px;margin:0 auto;}
 .product-grid--4{grid-template-columns:repeat(4,1fr);}
 .product-card{
   background:var(--white);border:1px solid #e7efe9;border-radius:var(--radius);
@@ -400,13 +404,16 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 /* ===== Catalogo Premium ===== */
 .section[hidden]{display:none;}
 
-/* Banner 1920x1080 (16:9) */
+/* Banner Premium 1440x500 (3:1). Excepcion: el banner de Multiusos/Empresas
+   (#cat-multiusos) ya tiene foto real disenada en 16:9 — se mantiene en su
+   proporcion original para no recortarla (ver override mas abajo). */
 .cat-banner{
-  width:100%;aspect-ratio:16/9;overflow:hidden;
+  width:100%;aspect-ratio:1440/500;overflow:hidden;
   border-radius:24px;background:var(--cream-100);
   box-shadow:var(--shadow-md);margin-bottom:40px;
 }
-.cat-banner__img{width:100%;height:100%;object-fit:cover;display:block;}
+#cat-multiusos .cat-banner{aspect-ratio:16/9;}
+.cat-banner__img{width:100%;height:100%;object-fit:contain;display:block;}
 
 /* Tarjeta de producto: altura uniforme via flex + grid stretch */
 .cat-card{
@@ -419,7 +426,11 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 
 /* Imagen 1200x1200 (1:1) */
 .cat-card__media{position:relative;width:100%;aspect-ratio:1/1;background:var(--cream-50);overflow:hidden;}
-.cat-card__img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+/* Variante vertical (2:3) para fotos de producto en formato retrato, ej. Capivas */
+.cat-card__media--portrait{aspect-ratio:2/3;}
+/* Variante horizontal (4:3) para etiquetas/fichas de producto, ej. fragancias EcoFresh */
+.cat-card__media--landscape{aspect-ratio:4/3;}
+.cat-card__img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s ease;}
 .cat-card:hover .cat-card__img{transform:scale(1.04);}
 .cat-card__tag{
   position:absolute;top:12px;left:12px;
@@ -468,6 +479,11 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 
 /* Use-case sections (Hogar / Oficina) */
 .usecase{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+/* Bloques "Clientes que confian": varios .usecase apilados en una misma
+   seccion necesitan su propio espaciado vertical (normalmente .usecase es
+   el unico contenido de su seccion, con el padding:80px 0 de .section). */
+.experience{margin-top:60px;}
+.experience + .intro{margin-top:60px;}
 .usecase--reverse .usecase__media{order:2;}
 .usecase__media{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-md);}
 .usecase__media img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -493,6 +509,18 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
   display:flex;align-items:center;justify-content:center;font-size:.95rem;
 }
 .why-item p{font-weight:700;color:var(--green-900);font-size:.98rem;}
+
+/* Fundadores */
+.founders__lead{font-size:1.1rem;color:var(--green-700);font-weight:700;margin:12px 0 18px;}
+.founders__text{color:var(--text-600);font-size:1.02rem;line-height:1.7;margin-bottom:16px;}
+.founders__quote{
+  margin:26px 0;padding:22px 26px;
+  border-left:4px solid var(--green-600);
+  background:var(--cream-50);border-radius:0 16px 16px 0;
+  font-family:var(--font-head);font-style:italic;font-weight:600;
+  font-size:1.1rem;color:var(--green-900);line-height:1.55;
+}
+.founders__closing{margin-top:22px;font-family:var(--font-head);font-weight:700;color:var(--green-700);line-height:1.6;font-size:1.02rem;}
 
 /* Mascota */
 .section--mascota{background:linear-gradient(180deg,var(--navy-900),#0f3a5e);color:var(--white);}
@@ -551,7 +579,7 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 /* Footer */
 .footer{background:var(--green-900);color:rgba(255,255,255,.85);padding:64px 0 0;}
 .footer__inner{
-  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;
   border-bottom:1px solid rgba(255,255,255,.12);
 }
 .footer__brand .logo__img{height:56px;background:var(--white);border-radius:10px;padding:4px 8px;}
@@ -561,6 +589,14 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 .footer__col h4{color:var(--white);font-size:1rem;margin-bottom:16px;}
 .footer__col{display:flex;flex-direction:column;gap:10px;font-size:.92rem;}
 .footer__col a:hover{color:var(--lime-400);}
+.footer__phone{display:flex;align-items:center;gap:8px;}
+.footer__phone svg{flex-shrink:0;}
+.footer__social{display:flex;flex-direction:column;gap:14px;}
+.footer__social-link{display:flex;align-items:center;gap:12px;transition:transform .2s;}
+.footer__social-link:hover{transform:translateX(3px);}
+.footer__social-link svg{flex-shrink:0;}
+.footer__social-link strong{display:block;font-size:.92rem;font-weight:700;}
+.footer__social-link small{display:block;font-size:.8rem;opacity:.65;}
 .footer__bottom{text-align:center;padding:22px 0;font-size:.85rem;color:rgba(255,255,255,.55);}
 
 /* Floating actions (Bot + WhatsApp) */
@@ -719,11 +755,10 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
   .mega-menu{
     position:static;transform:none;width:auto;
     box-shadow:none;border-radius:0;padding:4px 24px 16px;
-    grid-template-columns:1fr;gap:4px;
+    gap:2px;
     background:var(--cream-50);
   }
-  .mega-menu__item{flex-direction:row;align-items:center;padding:8px 6px;}
-  .mega-menu__img{width:52px;height:52px;flex-shrink:0;aspect-ratio:1/1;}
+  .mega-menu__item{padding:12px 10px;}
 }
 
 @media (max-width:640px){

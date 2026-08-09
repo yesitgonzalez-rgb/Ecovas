@@ -32,29 +32,19 @@
         </button>
         <div class="mega-menu" id="megaMenu" hidden>
           <a class="mega-menu__item" href="#cat-multiusos" data-nav-link="cat-multiusos">
-            <img class="mega-menu__img" src="assets/img/cat-dispensador.jpg" alt="ECOVAS Multiusos" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="mega-menu__title">ECOVAS Multiusos</span>
-            <span class="mega-menu__desc">186 usos. Limpieza profunda sin químicos agresivos.</span>
           </a>
           <a class="mega-menu__item" href="#cat-cuidado-personal" data-nav-link="cat-cuidado-personal">
-            <img class="mega-menu__img" src="assets/img/placeholder-product.svg" alt="Cuidado Personal" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="mega-menu__title">Cuidado Personal</span>
-            <span class="mega-menu__desc">Productos para el bienestar diario de toda la familia.</span>
           </a>
           <a class="mega-menu__item" href="#cat-estetica" data-nav-link="cat-estetica">
-            <img class="mega-menu__img" src="assets/img/placeholder-product.svg" alt="Estética" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="mega-menu__title">Estética</span>
-            <span class="mega-menu__desc">Línea profesional para tratamientos corporales.</span>
           </a>
           <a class="mega-menu__item" href="#cat-mascotas" data-nav-link="cat-mascotas">
-            <img class="mega-menu__img" src="assets/img/placeholder-product.svg" alt="Tinoorine Mascotas" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="mega-menu__title">Tinoorine Mascotas</span>
-            <span class="mega-menu__desc">Educación sanitaria para perros, gatos y palomas.</span>
           </a>
           <a class="mega-menu__item" href="#cat-ambientadores" data-nav-link="cat-ambientadores">
-            <img class="mega-menu__img" src="assets/img/placeholder-product.svg" alt="EcoFresh Ambientadores" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="mega-menu__title">EcoFresh Ambientadores</span>
-            <span class="mega-menu__desc">Fragancias premium para hogar, oficina y negocio.</span>
           </a>
         </div>
       </div>
@@ -98,12 +88,12 @@
         <span class="slide__scrim"></span>
         <span class="slide__cta">Explorar soluciones</span>
       </a>
-      <a class="slide" href="#industria" aria-label="ECOVAS Industrias: seguridad, calidad y eficiencia, 186 usos — Explorar soluciones">
-        <img src="assets/img/slider-industrias-1.jpg?v=2" alt="ECOVAS Industrias: seguridad, calidad y eficiencia, 186 usos" width="2200" height="764" loading="lazy" decoding="async">
+      <a class="slide" href="#cat-multiusos" aria-label="ECOVAS Industrias: seguridad, calidad y eficiencia, 186 usos — Explorar soluciones">
+        <img src="assets/img/slider-industrias-1.jpg?v=3" alt="ECOVAS Industrias: seguridad, calidad y eficiencia, 186 usos" width="2200" height="764" loading="lazy" decoding="async">
         <span class="slide__scrim"></span>
         <span class="slide__cta">Explorar soluciones</span>
       </a>
-      <a class="slide" href="#industria" aria-label="ECOVAS Industrias, Hospitales, Colegios y Negocios: 186 usos — Explorar soluciones">
+      <a class="slide" href="#cat-multiusos" aria-label="ECOVAS Industrias, Hospitales, Colegios y Negocios: 186 usos — Explorar soluciones">
         <img src="assets/img/slider-industrias-2.jpg?v=2" alt="ECOVAS Industrias, Hospitales, Colegios y Negocios: 186 usos" width="2200" height="766" loading="lazy" decoding="async">
         <span class="slide__scrim"></span>
         <span class="slide__cta">Explorar soluciones</span>
@@ -307,10 +297,11 @@
 </section>
 
 <!-- ===== Catalogo Premium ECOVAS =====
-     Placeholders: banner 1920x1080 (16:9) y producto 1200x1200 (1:1).
+     Placeholders: banner 1440x500 (3:1) y producto 1200x1200 (1:1).
+     Excepcion: #cat-multiusos mantiene su banner real en 16:9 (ver override en style.css).
      Reemplaza el src de cada <img> por la imagen definitiva conservando width/height.
-     El carrito NO esta conectado: los botones Comprar y Ver detalle estan disabled
-     y las tarjetas no usan la clase .add-to-cart. -->
+     Carrito conectado via [data-product] + .add-to-cart (mismo sistema que .feel-card).
+     "Ver detalle" sigue disabled: no hay pagina de detalle todavia. -->
 
 <section class="section" id="cat-multiusos">
   <div class="container">
@@ -344,7 +335,7 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
@@ -370,7 +361,7 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
@@ -396,7 +387,7 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
@@ -405,145 +396,26 @@
   </div>
 </section>
 
-<section class="section section--ecovas" id="multiusos">
-  <div class="container ecovas">
-    <div class="ecovas__media">
-      <div class="ecovas__badge">186 usos</div>
-      <div class="ecovas__cards">
-        <img class="ecovas__card-img" src="assets/img/ecovas-cuadrado.jpg" alt="ECOVAS Multiusos balde 20 litros">
-        <img class="ecovas__card-img" src="assets/img/ecovas-cuadrado-2.jpg" alt="ECOVAS Multiusos doypack 6 litros">
-      </div>
-    </div>
-    <div class="ecovas__content">
-      <span class="eyebrow">ECOVAS Multiusos</span>
-      <h2>Limpieza inteligente para tu hogar y tu sitio de trabajo</h2>
-      <p class="ecovas__subtitle">ECOVAS MULTIUSOS limpia, restaura y desmancha múltiples superficies sin químicos agresivos. Ahorra agua, tiempo y dinero: una solución práctica, segura y amigable con el medio ambiente.</p>
-
-      <ul class="ecovas__facts">
-        <li>186 usos en distintas superficies</li>
-        <li>100% biodegradable</li>
-        <li>Sin químicos · sin guantes ni tapabocas</li>
-        <li>Aplica en frío o en calor</li>
-      </ul>
-
-      <div class="ecovas__cta">
-        <a href="#presentaciones" class="btn btn--primary">Ver presentaciones</a>
-        <a href="https://wa.me/573103336061?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20ECOVAS%20MULTIUSOS" target="_blank" rel="noopener" class="btn btn--whatsapp">
-          Pedir por WhatsApp 310 333 6061
-        </a>
-      </div>
-      <p class="ecovas__email">✉️ <a href="mailto:ecovasmultiusos@gmail.com">ecovasmultiusos@gmail.com</a> — lo que necesites o no entiendas, pregúntame.</p>
-    </div>
-  </div>
-
-  <div class="container" id="presentaciones">
-    <div class="product-grid product-grid--4">
-      <div class="product-card" data-product="ECOVAS Multiusos Doypack 270 ml">
-        <span class="product-card__icon">🧴</span>
-        <h3>Doypack 270 ml</h3>
-        <p>Presentación compacta, ideal para probar o para espacios pequeños.</p>
-        <div class="product-card__cart">
-          <div class="qty-stepper">
-            <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
-            <span class="qty-stepper__value">1</span>
-            <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
-          </div>
-          <button type="button" class="btn btn--primary btn--sm add-to-cart">Agregar</button>
-        </div>
-        <a href="https://wa.me/573103336061?text=Hola%2C%20quiero%20consultar%20precio%20de%20ECOVAS%20Multiusos%20270ml" target="_blank" rel="noopener" class="product-card__link">Consultar precio →</a>
-      </div>
-      <div class="product-card" data-product="ECOVAS Multiusos Doypack 1.150 g">
-        <span class="product-card__icon">📦</span>
-        <h3>Doypack 1.150 g</h3>
-        <p>Rinde varias semanas de limpieza para el hogar.</p>
-        <div class="product-card__cart">
-          <div class="qty-stepper">
-            <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
-            <span class="qty-stepper__value">1</span>
-            <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
-          </div>
-          <button type="button" class="btn btn--primary btn--sm add-to-cart">Agregar</button>
-        </div>
-        <a href="https://wa.me/573103336061?text=Hola%2C%20quiero%20consultar%20precio%20de%20ECOVAS%20Multiusos%201150g" target="_blank" rel="noopener" class="product-card__link">Consultar precio →</a>
-      </div>
-      <div class="product-card" data-product="ECOVAS Multiusos Doypack 6 Lt">
-        <span class="product-card__icon">💧</span>
-        <h3>Doypack 6 Lt</h3>
-        <p>Rendimiento familiar con 186 usos garantizados.</p>
-        <div class="product-card__cart">
-          <div class="qty-stepper">
-            <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
-            <span class="qty-stepper__value">1</span>
-            <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
-          </div>
-          <button type="button" class="btn btn--primary btn--sm add-to-cart">Agregar</button>
-        </div>
-        <a href="https://wa.me/573103336061?text=Hola%2C%20quiero%20consultar%20precio%20de%20ECOVAS%20Multiusos%206Lt" target="_blank" rel="noopener" class="product-card__link">Consultar precio →</a>
-      </div>
-      <div class="product-card" data-product="ECOVAS Multiusos Balde 20 Lt Profesional">
-        <span class="product-card__icon">🏭</span>
-        <h3>Balde 20 Lt Profesional</h3>
-        <p>Presentación industrial para negocios, oficinas y locales comerciales.</p>
-        <div class="product-card__cart">
-          <div class="qty-stepper">
-            <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
-            <span class="qty-stepper__value">1</span>
-            <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
-          </div>
-          <button type="button" class="btn btn--primary btn--sm add-to-cart">Agregar</button>
-        </div>
-        <a href="https://wa.me/573103336061?text=Hola%2C%20quiero%20consultar%20precio%20de%20ECOVAS%20Multiusos%2020Lt" target="_blank" rel="noopener" class="product-card__link">Consultar precio →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="industria">
-  <div class="container">
-    <div class="line-teaser">
-      <span class="line-teaser__badge">Próximamente</span>
-      <h2>ECOVAS Industria</h2>
-      <p>Estamos preparando una línea para uso industrial de alto volumen, con el mismo compromiso ecológico de ECOVAS Multiusos. Escríbenos y te avisamos apenas esté disponible.</p>
-      <div class="line-teaser__actions">
-        <a href="https://wa.me/573103336061?text=Hola%2C%20quiero%20que%20me%20avisen%20sobre%20ECOVAS%20Industria" target="_blank" rel="noopener" class="btn btn--whatsapp">Quiero que me avisen</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--mascota">
-  <div class="container mascota">
-    <div class="mascota__media">
-      <img src="assets/img/mascota-ecovas.jpg" alt="Mascota ECOVAS, el héroe de tu hogar">
-    </div>
-    <div class="mascota__content">
-      <span class="eyebrow">Nuestro Héroe</span>
-      <h2>Conoce al héroe de tu hogar</h2>
-      <p>Detrás de cada limpieza hay un aliado que no usa químicos agresivos ni pone en riesgo tu salud ni la del planeta. Así nació nuestro héroe: la cara amigable de ECOVAS MULTIUSOS.</p>
-      <a href="https://wa.me/573103336061" target="_blank" rel="noopener" class="btn btn--whatsapp">Pedir por WhatsApp</a>
-    </div>
-  </div>
-</section>
 
 <section class="section" id="cat-cuidado-personal">
   <div class="container">
     <div class="cat-banner">
-      <img class="cat-banner__img" src="assets/img/placeholder-banner.svg" alt="Banner ECOVAS Cuidado Personal" width="1920" height="1080" loading="lazy" decoding="async">
+      <img class="cat-banner__img" src="assets/img/banner-cuidado-personal.jpg" alt="ECOVAS Cuidado Personal — Línea Capivas, fórmula avanzada con extractos naturales" width="1920" height="800" loading="lazy" decoding="async">
     </div>
     <div class="section__head">
       <h2>ECOVAS Cuidado Personal</h2>
       <p><strong>Higiene diaria, suave contigo y con el planeta</strong></p>
       <p>Productos de cuidado personal formulados sin químicos agresivos, pensados para uso frecuente en toda la familia.</p>
     </div>
-    <div class="product-grid product-grid--4">
-        <article class="cat-card" data-product="ECOVAS Cuidado Personal — Producto Cuidado Personal 1" data-sku="CP-01" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Cuidado Personal — Producto Cuidado Personal 1" width="1200" height="1200" loading="lazy" decoding="async">
+    <div class="product-grid product-grid--2">
+        <article class="cat-card" data-product="ECOVAS Cuidado Personal — Capivas Tratamiento Capilar 145 Gr" data-sku="CP-CAP-145" data-price="">
+          <div class="cat-card__media cat-card__media--portrait">
+            <img class="cat-card__img" src="assets/img/cuidado-personal-145gr.jpg" alt="Capivas Tratamiento Capilar 145 Gr" width="900" height="1350" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Cuidado Personal 1</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Capivas Tratamiento Capilar 145 Gr</h3>
+            <p class="cat-card__desc">Fórmula avanzada con extractos naturales que fortalece desde la raíz y ayuda a frenar la caída del cabello. Presentación ideal para empezar el tratamiento.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -557,19 +429,19 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Cuidado Personal — Producto Cuidado Personal 2" data-sku="CP-02" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Cuidado Personal — Producto Cuidado Personal 2" width="1200" height="1200" loading="lazy" decoding="async">
+        <article class="cat-card" data-product="ECOVAS Cuidado Personal — Capivas Tratamiento Capilar 300 Gr" data-sku="CP-CAP-300" data-price="">
+          <div class="cat-card__media cat-card__media--portrait">
+            <img class="cat-card__img" src="assets/img/cuidado-personal-300gr.jpg" alt="Capivas Tratamiento Capilar 300 Gr" width="900" height="1350" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Cuidado Personal 2</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Capivas Tratamiento Capilar 300 Gr</h3>
+            <p class="cat-card__desc">La misma fórmula avanzada en mayor rendimiento: nutre, revitaliza y estimula el crecimiento con uso diario prolongado.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -583,19 +455,32 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Cuidado Personal — Producto Cuidado Personal 3" data-sku="CP-03" data-price="">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cat-banner">
+      <img class="cat-banner__img" src="assets/img/banner-cuidado-personal-2.jpg" alt="ECOVAS Cuidado Personal — Emulsión Facial Luna, para todo tipo de manchas en cara y piel" width="1920" height="800" loading="lazy" decoding="async">
+    </div>
+    <div class="section__head">
+      <h2>Emulsión Facial Luna</h2>
+      <p><strong>Para todo tipo de manchas en cara y piel</strong></p>
+      <p>Fórmula nocturna con Vitamina A y C que ayuda a aclarar manchas, unificar el tono y nutrir la piel mientras duermes. Uso exclusivo en las noches.</p>
+    </div>
+    <div class="product-grid product-grid--1">
+        <article class="cat-card" data-product="ECOVAS Cuidado Personal — Emulsión Facial Luna 400 Gr" data-sku="CP-LUNA-400" data-price="">
           <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Cuidado Personal — Producto Cuidado Personal 3" width="1200" height="1200" loading="lazy" decoding="async">
+            <img class="cat-card__img" src="assets/img/cat-cuidado-personal-facial-luna.jpg" alt="Emulsión Facial Luna 400 Gr" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Cuidado Personal 3</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Emulsión Facial Luna 400 Gr</h3>
+            <p class="cat-card__desc">Aclara manchas y unifica el tono, con hidratación profunda y regeneración de la piel. Fórmula de uso nocturno para dejar la piel renovada al despertar.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -609,33 +494,7 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
-              <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
-            </div>
-          </div>
-        </article>
-        <article class="cat-card" data-product="ECOVAS Cuidado Personal — Producto Cuidado Personal 4" data-sku="CP-04" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Cuidado Personal — Producto Cuidado Personal 4" width="1200" height="1200" loading="lazy" decoding="async">
-            <span class="cat-card__tag" hidden></span>
-          </div>
-          <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Cuidado Personal 4</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
-            <div class="cat-card__spacer"></div>
-            <div class="cat-card__prices">
-              <span class="cat-card__price">$ —</span>
-              <span class="cat-card__price-old" hidden></span>
-            </div>
-            <div class="cat-card__cart">
-              <div class="qty-stepper">
-                <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
-                <span class="qty-stepper__value">1</span>
-                <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
-              </div>
-            </div>
-            <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
@@ -647,22 +506,22 @@
 <section class="section section--alt" id="cat-estetica">
   <div class="container">
     <div class="cat-banner">
-      <img class="cat-banner__img" src="assets/img/placeholder-banner.svg" alt="Banner ECOVAS Estética" width="1920" height="1080" loading="lazy" decoding="async">
+      <img class="cat-banner__img" src="assets/img/banner-estetica.jpg" alt="ECOVAS Estética — Línea Abdomen, extracto líquido adelgazante para mujeres y hombres" width="1920" height="800" loading="lazy" decoding="async">
     </div>
     <div class="section__head">
       <h2>ECOVAS Estética</h2>
       <p><strong>Cuidado profesional con el mismo compromiso ecológico</strong></p>
       <p>Línea marca propia para centros de estética y cuidado profesional. Fórmulas biodegradables y de bajo impacto.</p>
     </div>
-    <div class="product-grid product-grid--4">
-        <article class="cat-card" data-product="ECOVAS Estética — Producto Estética 1" data-sku="ES-01" data-price="">
+    <div class="product-grid product-grid--2">
+        <article class="cat-card" data-product="ECOVAS Estética — Abdomen Extracto Líquido Adelgazante 500 mL" data-sku="ES-ABD-500" data-price="">
           <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Estética — Producto Estética 1" width="1200" height="1200" loading="lazy" decoding="async">
+            <img class="cat-card__img" src="assets/img/cat-estetica-abdomen-500ml.jpg" alt="Abdomen Extracto Líquido Adelgazante 500 mL" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Estética 1</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Abdomen 500 mL</h3>
+            <p class="cat-card__desc">Extracto líquido adelgazante para mujeres y hombres. Producto térmico que ayuda a moldear la cintura, eliminar toxinas y dejar el abdomen con sensación de suavidad total.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -676,19 +535,19 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Estética — Producto Estética 2" data-sku="ES-02" data-price="">
+        <article class="cat-card" data-product="ECOVAS Estética — Abdomen Extracto Líquido Adelgazante 1.000 mL" data-sku="ES-ABD-1000" data-price="">
           <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Estética — Producto Estética 2" width="1200" height="1200" loading="lazy" decoding="async">
+            <img class="cat-card__img" src="assets/img/cat-estetica-abdomen-1000ml.jpg" alt="Abdomen Extracto Líquido Adelgazante 1.000 mL" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Estética 2</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Abdomen 1.000 mL</h3>
+            <p class="cat-card__desc">La misma fórmula natural en mayor rendimiento: ideal para un tratamiento más prolongado y uso constante en el moldeado del abdomen.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -702,19 +561,35 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Estética — Producto Estética 3" data-sku="ES-03" data-price="">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cat-banner">
+      <img class="cat-banner__img" src="assets/img/banner-celubell-1.jpg" alt="ECOVAS Estética — Crema Exfoliante Celubell, para gorditos en brazos y piernas" width="1920" height="667" loading="lazy" decoding="async">
+    </div>
+    <div class="cat-banner">
+      <img class="cat-banner__img" src="assets/img/banner-celubell-2.jpg" alt="ECOVAS Estética — Crema Exfoliante Celubell, elimina la celulitis" width="1920" height="666" loading="lazy" decoding="async">
+    </div>
+    <div class="section__head">
+      <h2>Crema Exfoliante Celubell</h2>
+      <p><strong>Para gorditos en brazos y piernas, mujeres y hombres</strong></p>
+      <p>Fórmula con extractos naturales que ayuda a eliminar la celulitis, refrescar y relajar, con hidratación hasta por 12 horas.</p>
+    </div>
+    <div class="product-grid product-grid--1">
+        <article class="cat-card" data-product="ECOVAS Estética — Crema Exfoliante Celubell 500 Gr" data-sku="ES-CELU-500" data-price="">
           <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Estética — Producto Estética 3" width="1200" height="1200" loading="lazy" decoding="async">
+            <img class="cat-card__img" src="assets/img/cat-estetica-celubell.jpg" alt="Crema Exfoliante Celubell 500 Gr" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Estética 3</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Celubell 500 Gr</h3>
+            <p class="cat-card__desc">Crema exfoliante que alivia la sensación de pesadez en brazos y piernas, mejora la elasticidad y deja la piel suave, hidratada hasta 12 horas.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -728,33 +603,7 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
-              <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
-            </div>
-          </div>
-        </article>
-        <article class="cat-card" data-product="ECOVAS Estética — Producto Estética 4" data-sku="ES-04" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Estética — Producto Estética 4" width="1200" height="1200" loading="lazy" decoding="async">
-            <span class="cat-card__tag" hidden></span>
-          </div>
-          <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Estética 4</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
-            <div class="cat-card__spacer"></div>
-            <div class="cat-card__prices">
-              <span class="cat-card__price">$ —</span>
-              <span class="cat-card__price-old" hidden></span>
-            </div>
-            <div class="cat-card__cart">
-              <div class="qty-stepper">
-                <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
-                <span class="qty-stepper__value">1</span>
-                <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
-              </div>
-            </div>
-            <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
@@ -766,22 +615,22 @@
 <section class="section section--alt" id="cat-mascotas">
   <div class="container">
     <div class="cat-banner">
-      <img class="cat-banner__img" src="assets/img/placeholder-banner.svg" alt="Banner ECOVAS Mascotas" width="1920" height="1080" loading="lazy" decoding="async">
+      <img class="cat-banner__img" src="assets/img/banner-tinoorine-1.jpg" alt="Tinoorine Mascotas — Fórmula ecológica biodegradable para perros, gatos y aves" width="1920" height="669" loading="lazy" decoding="async">
     </div>
     <div class="section__head">
       <h2>ECOVAS Mascotas</h2>
       <p><strong>Limpieza segura para quienes también son familia</strong></p>
       <p>Fórmulas sin residuos tóxicos, seguras para espacios donde conviven mascotas: camas, pisos, guacales y accesorios.</p>
     </div>
-    <div class="product-grid product-grid--4">
-        <article class="cat-card" data-product="ECOVAS Mascotas — Producto Mascotas 1" data-sku="MA-01" data-price="">
+    <div class="product-grid product-grid--1">
+        <article class="cat-card" data-product="ECOVAS Mascotas — Tinoorine Mascotas 1 Lt" data-sku="MA-TIN-1L" data-price="">
           <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Mascotas — Producto Mascotas 1" width="1200" height="1200" loading="lazy" decoding="async">
+            <img class="cat-card__img" src="assets/img/cat-mascotas-tinoorine-1.jpg" alt="Tinoorine Mascotas 1 Lt" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Mascotas 1</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Tinoorine Mascotas 1 Lt</h3>
+            <p class="cat-card__desc">Fórmula ecológica biodegradable en aspersor, para evitar que perros, gatos, aves y otros se orinen o hagan sus necesidades en lugares no deseados. Limpia y desodoriza sin químicos agresivos.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -795,19 +644,32 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Mascotas — Producto Mascotas 2" data-sku="MA-02" data-price="">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cat-banner">
+      <img class="cat-banner__img" src="assets/img/banner-tinoorine-2.jpg" alt="Tinoorine Mascotas 3.8 Lts — Fórmula ecológica biodegradable" width="1920" height="800" loading="lazy" decoding="async">
+    </div>
+    <div class="section__head">
+      <h2>Tinoorine Mascotas 3.8 Lt</h2>
+      <p><strong>Mayor rendimiento, el mismo cuidado ecológico</strong></p>
+      <p>La misma fórmula biodegradable en presentación de 3.8 litros, ideal para hogares con más de una mascota o uso prolongado.</p>
+    </div>
+    <div class="product-grid product-grid--1">
+        <article class="cat-card" data-product="ECOVAS Mascotas — Tinoorine Mascotas 3.8 Lt" data-sku="MA-TIN-3.8L" data-price="">
           <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Mascotas — Producto Mascotas 2" width="1200" height="1200" loading="lazy" decoding="async">
+            <img class="cat-card__img" src="assets/img/cat-mascotas-tinoorine-2.jpg" alt="Tinoorine Mascotas 3.8 Lt" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Mascotas 2</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Tinoorine Mascotas 3.8 Lt</h3>
+            <p class="cat-card__desc">Presentación de mayor rendimiento con la misma fórmula ecológica biodegradable, para evitar que perros, gatos, aves y otros se orinen o hagan sus necesidades en lugares no deseados.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -821,19 +683,32 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Mascotas — Producto Mascotas 3" data-sku="MA-03" data-price="">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cat-banner">
+      <img class="cat-banner__img" src="assets/img/banner-tinoorine-3.jpg" alt="Tinoorine Mascotas 20 Litros — Repelente ecológico biodegradable para mascotas" width="1920" height="667" loading="lazy" decoding="async">
+    </div>
+    <div class="section__head">
+      <h2>Tinoorine Mascotas 20 Litros</h2>
+      <p><strong>Máximo rendimiento para hogares, negocios y espacios grandes</strong></p>
+      <p>La misma fórmula biodegradable en presentación de 20 litros, ideal para criaderos, veterinarias y espacios con varias mascotas.</p>
+    </div>
+    <div class="product-grid product-grid--1">
+        <article class="cat-card" data-product="ECOVAS Mascotas — Tinoorine Mascotas 20 Litros" data-sku="MA-TIN-20L" data-price="">
           <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Mascotas — Producto Mascotas 3" width="1200" height="1200" loading="lazy" decoding="async">
+            <img class="cat-card__img" src="assets/img/cat-mascotas-tinoorine-3.jpg" alt="Tinoorine Mascotas 20 Litros" width="1200" height="1200" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Mascotas 3</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
+            <h3 class="cat-card__title">Tinoorine Mascotas 20 Litros</h3>
+            <p class="cat-card__desc">Presentación de máximo rendimiento con la misma fórmula ecológica biodegradable, para evitar que perros, gatos, aves y otros se orinen o hagan sus necesidades en lugares no deseados.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -847,33 +722,7 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
-              <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
-            </div>
-          </div>
-        </article>
-        <article class="cat-card" data-product="ECOVAS Mascotas — Producto Mascotas 4" data-sku="MA-04" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Mascotas — Producto Mascotas 4" width="1200" height="1200" loading="lazy" decoding="async">
-            <span class="cat-card__tag" hidden></span>
-          </div>
-          <div class="cat-card__body">
-            <h3 class="cat-card__title">Producto Mascotas 4</h3>
-            <p class="cat-card__desc">Pendiente de definir nombre, presentación y ficha técnica.</p>
-            <div class="cat-card__spacer"></div>
-            <div class="cat-card__prices">
-              <span class="cat-card__price">$ —</span>
-              <span class="cat-card__price-old" hidden></span>
-            </div>
-            <div class="cat-card__cart">
-              <div class="qty-stepper">
-                <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
-                <span class="qty-stepper__value">1</span>
-                <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
-              </div>
-            </div>
-            <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
@@ -885,22 +734,22 @@
 <section class="section" id="cat-ambientadores">
   <div class="container">
     <div class="cat-banner">
-      <img class="cat-banner__img" src="assets/img/placeholder-banner.svg" alt="Banner ECOVAS Ambientadores" width="1920" height="1080" loading="lazy" decoding="async">
+      <img class="cat-banner__img" src="assets/img/banner-ecofresh.jpg" alt="EcoFresh Ambientadores — Maracuyá, Bebé, Vainilla, Chicle, Bambú y Canela" width="1920" height="667" loading="lazy" decoding="async">
     </div>
     <div class="section__head">
       <h2>ECOVAS Ambientadores</h2>
       <p><strong>Fragancias que transforman cada espacio</strong></p>
       <p>Ambientadores de larga duración en aromas seleccionados, con la misma filosofía biodegradable de ECOVAS.</p>
     </div>
-    <div class="product-grid product-grid--4">
-        <article class="cat-card" data-product="ECOVAS Ambientadores — Ambientador Bambú" data-sku="AM-BAM" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Ambientadores — Ambientador Bambú" width="1200" height="1200" loading="lazy" decoding="async">
+    <div class="product-grid">
+        <article class="cat-card" data-product="ECOVAS Ambientadores — EcoFresh Maracuyá 60 ml" data-sku="AM-MAR" data-price="">
+          <div class="cat-card__media cat-card__media--landscape">
+            <img class="cat-card__img" src="assets/img/cat-ambientadores-maracuya.jpg" alt="EcoFresh Maracuyá 60 ml — Energía Tropical" width="1200" height="900" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Ambientador Bambú</h3>
-            <p class="cat-card__desc">Aroma fresco y verde, ideal para sala y espacios amplios.</p>
+            <h3 class="cat-card__title">EcoFresh Maracuyá</h3>
+            <p class="cat-card__desc">Energía Tropical. Un aroma frutal y refrescante que transforma tus espacios en ambientes frescos, limpios y llenos de vitalidad.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -914,19 +763,19 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Ambientadores — Ambientador Canela" data-sku="AM-CAN" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Ambientadores — Ambientador Canela" width="1200" height="1200" loading="lazy" decoding="async">
+        <article class="cat-card" data-product="ECOVAS Ambientadores — EcoFresh Bebé 60 ml" data-sku="AM-BEB" data-price="">
+          <div class="cat-card__media cat-card__media--landscape">
+            <img class="cat-card__img" src="assets/img/cat-ambientadores-bebe.jpg" alt="EcoFresh Bebé 60 ml — Suavidad y Pureza" width="1200" height="900" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Ambientador Canela</h3>
-            <p class="cat-card__desc">Aroma cálido y envolvente, ideal para ambientes acogedores.</p>
+            <h3 class="cat-card__title">EcoFresh Bebé</h3>
+            <p class="cat-card__desc">Suavidad &amp; Pureza. Un aroma tierno y delicado que crea ambientes frescos, limpios y llenos de bienestar.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -940,19 +789,19 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Ambientadores — Ambientador Vainilla" data-sku="AM-VAI" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Ambientadores — Ambientador Vainilla" width="1200" height="1200" loading="lazy" decoding="async">
+        <article class="cat-card" data-product="ECOVAS Ambientadores — EcoFresh Vainilla 60 ml" data-sku="AM-VAI" data-price="">
+          <div class="cat-card__media cat-card__media--landscape">
+            <img class="cat-card__img" src="assets/img/cat-ambientadores-vainilla.jpg" alt="EcoFresh Vainilla 60 ml — Elegancia Cálida" width="1200" height="900" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Ambientador Vainilla</h3>
-            <p class="cat-card__desc">Aroma dulce y suave, ideal para habitaciones.</p>
+            <h3 class="cat-card__title">EcoFresh Vainilla</h3>
+            <p class="cat-card__desc">Elegancia Cálida. Un aroma dulce y reconfortante que transforma tus espacios en ambientes frescos, limpios y llenos de armonía.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -966,19 +815,19 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
         </article>
-        <article class="cat-card" data-product="ECOVAS Ambientadores — Ambientador Maracuyá" data-sku="AM-MAR" data-price="">
-          <div class="cat-card__media">
-            <img class="cat-card__img" src="assets/img/placeholder-product.svg" alt="ECOVAS Ambientadores — Ambientador Maracuyá" width="1200" height="1200" loading="lazy" decoding="async">
+        <article class="cat-card" data-product="ECOVAS Ambientadores — EcoFresh Chicle 60 ml" data-sku="AM-CHI" data-price="">
+          <div class="cat-card__media cat-card__media--landscape">
+            <img class="cat-card__img" src="assets/img/cat-ambientadores-chicle.jpg" alt="EcoFresh Chicle 60 ml — Dulce y Divertido" width="1200" height="900" loading="lazy" decoding="async">
             <span class="cat-card__tag" hidden></span>
           </div>
           <div class="cat-card__body">
-            <h3 class="cat-card__title">Ambientador Maracuyá</h3>
-            <p class="cat-card__desc">Aroma frutal y tropical, ideal para cocina y baños.</p>
+            <h3 class="cat-card__title">EcoFresh Chicle</h3>
+            <p class="cat-card__desc">Dulce &amp; Divertido. Un aroma alegre y envolvente que transforma tus espacios en ambientes frescos, limpios y llenos de energía.</p>
             <div class="cat-card__spacer"></div>
             <div class="cat-card__prices">
               <span class="cat-card__price">$ —</span>
@@ -992,7 +841,59 @@
               </div>
             </div>
             <div class="cat-card__actions">
-              <button type="button" class="btn btn--primary btn--sm cat-card__buy" disabled>Comprar</button>
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
+              <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
+            </div>
+          </div>
+        </article>
+        <article class="cat-card" data-product="ECOVAS Ambientadores — EcoFresh Bambú 60 ml" data-sku="AM-BAM" data-price="">
+          <div class="cat-card__media cat-card__media--landscape">
+            <img class="cat-card__img" src="assets/img/cat-ambientadores-bambu.jpg" alt="EcoFresh Bambú 60 ml — Frescura Natural" width="1200" height="900" loading="lazy" decoding="async">
+            <span class="cat-card__tag" hidden></span>
+          </div>
+          <div class="cat-card__body">
+            <h3 class="cat-card__title">EcoFresh Bambú</h3>
+            <p class="cat-card__desc">Frescura Natural. Un aroma verde y relajante que transforma tus espacios en ambientes frescos, limpios y llenos de bienestar.</p>
+            <div class="cat-card__spacer"></div>
+            <div class="cat-card__prices">
+              <span class="cat-card__price">$ —</span>
+              <span class="cat-card__price-old" hidden></span>
+            </div>
+            <div class="cat-card__cart">
+              <div class="qty-stepper">
+                <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
+                <span class="qty-stepper__value">1</span>
+                <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
+              </div>
+            </div>
+            <div class="cat-card__actions">
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
+              <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
+            </div>
+          </div>
+        </article>
+        <article class="cat-card" data-product="ECOVAS Ambientadores — EcoFresh Canela 60 ml" data-sku="AM-CAN" data-price="">
+          <div class="cat-card__media cat-card__media--landscape">
+            <img class="cat-card__img" src="assets/img/cat-ambientadores-canela.jpg" alt="EcoFresh Canela 60 ml — Calidez que Envuelve" width="1200" height="900" loading="lazy" decoding="async">
+            <span class="cat-card__tag" hidden></span>
+          </div>
+          <div class="cat-card__body">
+            <h3 class="cat-card__title">EcoFresh Canela</h3>
+            <p class="cat-card__desc">Calidez que Envuelve. Un aroma cálido y especiado que transforma tus espacios en ambientes frescos, limpios y llenos de bienestar.</p>
+            <div class="cat-card__spacer"></div>
+            <div class="cat-card__prices">
+              <span class="cat-card__price">$ —</span>
+              <span class="cat-card__price-old" hidden></span>
+            </div>
+            <div class="cat-card__cart">
+              <div class="qty-stepper">
+                <button type="button" class="qty-stepper__btn" data-action="decrease" aria-label="Restar">−</button>
+                <span class="qty-stepper__value">1</span>
+                <button type="button" class="qty-stepper__btn" data-action="increase" aria-label="Sumar">+</button>
+              </div>
+            </div>
+            <div class="cat-card__actions">
+              <button type="button" class="btn btn--primary btn--sm cat-card__buy add-to-cart">Agregar al carrito</button>
               <button type="button" class="cat-card__detail" disabled>Ver detalle</button>
             </div>
           </div>
@@ -1121,6 +1022,70 @@
   </div>
 </section>
 
+<section class="section section--alt" id="fundadores">
+  <div class="container usecase">
+    <div class="usecase__media">
+      <img src="assets/img/fundadores-ecovas.jpg" alt="Fundadores de ECOVAS Productos" width="1536" height="1024" loading="lazy" decoding="async">
+    </div>
+    <div class="usecase__content">
+      <h2>Conoce a nuestros fundadores</h2>
+      <p class="founders__lead">Más de 12 años creando soluciones que hacen la diferencia</p>
+      <p class="founders__text">ECOVAS nació de una visión clara: desarrollar productos funcionales, efectivos y de alta calidad, combinando innovación, experiencia y un compromiso permanente con el cuidado del medio ambiente.</p>
+      <p class="founders__text">Durante más de 12 años, sus fundadores han trabajado en el desarrollo y perfeccionamiento de soluciones para diferentes necesidades de limpieza y cuidado, buscando siempre un equilibrio entre eficacia, calidad y responsabilidad.</p>
+      <blockquote class="founders__quote">“Cada producto que desarrollamos refleja nuestro compromiso con la excelencia, el cuidado del medio ambiente y el bienestar de quienes confían en ECOVAS.”</blockquote>
+      <p class="founders__closing">Experiencia que respalda cada producto.<br>Compromiso que construye confianza.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="clientes">
+  <div class="container intro">
+    <span class="eyebrow">Clientes que confían en ECOVAS</span>
+    <h2>Experiencias reales que respaldan nuestro compromiso</h2>
+    <p>ECOVAS está presente en diferentes espacios donde la limpieza, el cuidado y la confianza son importantes. Estas imágenes muestran algunas de las experiencias reales de personas y organizaciones que han incorporado nuestros productos.</p>
+  </div>
+
+  <div class="container usecase experience">
+    <div class="usecase__media">
+      <img src="assets/img/clientes-icbf-ciudad-verde.jpg" alt="Centro de Desarrollo Infantil ICBF – Ciudad Verde: fachada institucional y personal utilizando ECOVAS" width="1536" height="660" loading="lazy" decoding="async">
+    </div>
+    <div class="usecase__content">
+      <span class="eyebrow">Entorno institucional</span>
+      <h3>Centro de Desarrollo Infantil ICBF – Ciudad Verde</h3>
+      <p class="founders__text">Una experiencia real de ECOVAS en un entorno donde mantener espacios limpios y adecuados es parte fundamental del cuidado diario.</p>
+      <blockquote class="founders__quote">“Limpieza, cuidado y confianza en espacios que importan.”</blockquote>
+      <ul class="usecase__list">
+        <li>Entornos institucionales</li>
+        <li>Limpieza cotidiana</li>
+        <li>Compromiso con el cuidado</li>
+        <li>Soluciones ECOVAS</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container usecase usecase--reverse experience">
+    <div class="usecase__media">
+      <img src="assets/img/clientes-espacios-trabajo.jpg" alt="ECOVAS presente en diferentes espacios de trabajo: instituciones educativas y empresa de alimentos" width="1920" height="1440" loading="lazy" decoding="async">
+    </div>
+    <div class="usecase__content">
+      <span class="eyebrow">Experiencias reales</span>
+      <h3>ECOVAS presente en diferentes espacios de trabajo</h3>
+      <p class="founders__text">Personas y organizaciones han incorporado ECOVAS a sus espacios de trabajo, demostrando la versatilidad de nuestras soluciones para diferentes necesidades de limpieza.</p>
+      <blockquote class="founders__quote">“Una solución pensada para diferentes espacios y necesidades.”</blockquote>
+      <ul class="usecase__list">
+        <li>Espacios de trabajo</li>
+        <li>Entornos profesionales</li>
+        <li>Diferentes necesidades de limpieza</li>
+        <li>Productos ECOVAS</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container intro">
+    <p class="founders__closing">Cada experiencia fortalece nuestra razón de ser: desarrollar soluciones funcionales, responsables y pensadas para las necesidades reales de nuestros clientes.</p>
+  </div>
+</section>
+
 <section class="section" id="distribuidores">
   <div class="container">
     <div class="line-teaser">
@@ -1163,9 +1128,10 @@
         <label for="cfProduct">Producto de interés</label>
         <select id="cfProduct" name="producto">
           <option value="ECOVAS Multiusos">ECOVAS Multiusos</option>
-          <option value="Producto Hogar">Producto Hogar</option>
-          <option value="Producto Oficina &amp; Negocios">Producto Oficina &amp; Negocios</option>
-          <option value="Producto Estético (Próximamente)">Producto Estético (Próximamente)</option>
+          <option value="Cuidado Personal">Cuidado Personal</option>
+          <option value="Estética">Estética</option>
+          <option value="Tinoorine Mascotas">Tinoorine Mascotas</option>
+          <option value="EcoFresh Ambientadores">EcoFresh Ambientadores</option>
         </select>
       </div>
       <div class="contact-form__field">
@@ -1187,7 +1153,7 @@
 
     <div class="footer__col">
       <h4>Productos</h4>
-      <a href="#multiusos">ECOVAS Multiusos</a>
+      <a href="#cat-multiusos">ECOVAS Multiusos</a>
       <a href="#hogar">Producto Hogar</a>
       <a href="#cat-multiusos">Producto Oficina &amp; Negocios</a>
       <a href="#cat-estetica">Producto Estético (Próximamente)</a>
@@ -1197,6 +1163,41 @@
       <h4>Contacto</h4>
       <a href="https://wa.me/573103336061" target="_blank" rel="noopener">WhatsApp: 310 333 6061</a>
       <a href="mailto:ecovasmultiusos@gmail.com">ecovasmultiusos@gmail.com</a>
+      <a class="footer__phone" href="tel:+573174814687">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        317 481 4687
+      </a>
+      <a class="footer__phone" href="tel:+573152284462">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        315 228 4462
+      </a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Síguenos</h4>
+      <div class="footer__social">
+        <a class="footer__social-link" href="https://www.facebook.com/Ecovasmultiusos" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 12 2S2 6.48 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+          <span>
+            <strong>Facebook</strong>
+            <small>Ecovasmultiusos</small>
+          </span>
+        </a>
+        <a class="footer__social-link" href="https://www.instagram.com/ecovasmultiusos/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <span>
+            <strong>Instagram</strong>
+            <small>@ecovasmultiusos</small>
+          </span>
+        </a>
+        <a class="footer__social-link" href="https://www.tiktok.com/@ecovasmultiusos07" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+          <span>
+            <strong>TikTok</strong>
+            <small>@ecovasmultiusos07</small>
+          </span>
+        </a>
+      </div>
     </div>
   </div>
   <div class="footer__bottom">
@@ -1239,14 +1240,17 @@
           <button type="button" class="bot-option" data-topic="multiusos">
             <span class="bot-option__icon">🧴</span> ECOVAS Multiusos
           </button>
-          <button type="button" class="bot-option" data-topic="hogar">
-            <span class="bot-option__icon">🏠</span> Producto Hogar
+          <button type="button" class="bot-option" data-topic="cuidado-personal">
+            <span class="bot-option__icon">🧖</span> Cuidado Personal
           </button>
-          <button type="button" class="bot-option" data-topic="oficina">
-            <span class="bot-option__icon">🏢</span> Producto Oficina
+          <button type="button" class="bot-option" data-topic="estetica">
+            <span class="bot-option__icon">✨</span> Estética
           </button>
-          <button type="button" class="bot-option" data-topic="estetico">
-            <span class="bot-option__icon">✨</span> Producto Estético
+          <button type="button" class="bot-option" data-topic="mascotas">
+            <span class="bot-option__icon">🐾</span> Tinoorine Mascotas
+          </button>
+          <button type="button" class="bot-option" data-topic="ambientadores">
+            <span class="bot-option__icon">🌸</span> EcoFresh Ambientadores
           </button>
         </div>
         <a class="bot-panel__cta" id="botCta" href="https://wa.me/573103336061" target="_blank" rel="noopener">Escribir directamente por WhatsApp</a>

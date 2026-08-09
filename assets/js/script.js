@@ -220,23 +220,28 @@ document.addEventListener('keydown', e => {
 const botTopics = {
   multiusos: {
     label: 'ECOVAS Multiusos',
-    reply: '¡Excelente elección! ECOVAS Multiusos tiene 186 usos en distintas superficies, es 100% biodegradable y no necesitas guantes ni tapabocas. ¿Seguimos por WhatsApp para ver presentaciones y precios?',
+    reply: '¡Excelente elección! ECOVAS Multiusos tiene 186 usos en distintas superficies del hogar y espacios de trabajo, es 100% biodegradable y no necesitas guantes ni tapabocas. ¿Seguimos por WhatsApp para ver presentaciones y precios?',
     waText: 'Hola, quiero saber más sobre ECOVAS Multiusos'
   },
-  hogar: {
-    label: 'Producto Hogar',
-    reply: '¡Excelente elección! ECOVAS para tu hogar limpia baños, cocina y pisos de forma segura para toda la familia, sin químicos agresivos. ¿Seguimos por WhatsApp?',
-    waText: 'Hola, quiero saber más sobre el Producto Hogar'
+  'cuidado-personal': {
+    label: 'Cuidado Personal',
+    reply: 'Nuestra línea Cuidado Personal incluye el tratamiento capilar Capivas y la Emulsión Facial Luna, formulados sin químicos agresivos. ¿Seguimos por WhatsApp para ver presentaciones y precios?',
+    waText: 'Hola, quiero saber más sobre la línea Cuidado Personal'
   },
-  oficina: {
-    label: 'Producto Oficina',
-    reply: '¡Excelente elección! Nuestra presentación de 20 litros rinde 186 usos, ideal para reducir costos de aseo en tu empresa o negocio. ¿Seguimos por WhatsApp?',
-    waText: 'Hola, quiero saber más sobre el Producto Oficina'
+  estetica: {
+    label: 'Estética',
+    reply: 'Nuestra línea Estética incluye el extracto líquido adelgazante para abdomen y la crema exfoliante Celubell, pensada para el cuidado corporal. ¿Seguimos por WhatsApp para ver presentaciones y precios?',
+    waText: 'Hola, quiero saber más sobre la línea Estética'
   },
-  estetico: {
-    label: 'Producto Estético',
-    reply: 'Estamos preparando esta línea con el mismo compromiso ecológico de ECOVAS. Escríbenos por WhatsApp y serás de los primeros en enterarte cuando esté disponible.',
-    waText: 'Hola, quiero saber más sobre el Producto Estético'
+  mascotas: {
+    label: 'Tinoorine Mascotas',
+    reply: 'Tinoorine Mascotas es una fórmula ecológica biodegradable para evitar que perros, gatos y aves hagan sus necesidades en lugares no deseados, disponible en 1 Lt, 3.8 Lt y 20 Litros. ¿Seguimos por WhatsApp para ver presentaciones y precios?',
+    waText: 'Hola, quiero saber más sobre Tinoorine Mascotas'
+  },
+  ambientadores: {
+    label: 'EcoFresh Ambientadores',
+    reply: 'EcoFresh Ambientadores tiene 6 fragancias (Maracuyá, Bebé, Vainilla, Chicle, Bambú y Canela) en presentación de 60 ml. ¿Seguimos por WhatsApp para ver precios?',
+    waText: 'Hola, quiero saber más sobre EcoFresh Ambientadores'
   }
 };
 
@@ -309,10 +314,10 @@ function updateCartBadge() {
 
 function updateCartWhatsappLink() {
   if (cart.length === 0) {
-    cartWhatsappBtn.href = 'https://wa.me/573103336061?text=' + encodeURIComponent('Hola, quiero hacer un pedido de ECOVAS Multiusos.');
+    cartWhatsappBtn.href = 'https://wa.me/573103336061?text=' + encodeURIComponent('Hola, quiero hacer un pedido de productos ECOVAS.');
     return;
   }
-  let text = 'Hola, quiero hacer el siguiente pedido de ECOVAS Multiusos:\n';
+  let text = 'Hola, quiero hacer el siguiente pedido de productos ECOVAS:\n';
   cart.forEach(item => { text += `- ${item.name} x${item.qty}\n`; });
   text += 'Por favor confírmenme disponibilidad y precio.';
   cartWhatsappBtn.href = 'https://wa.me/573103336061?text=' + encodeURIComponent(text);
@@ -320,10 +325,11 @@ function updateCartWhatsappLink() {
 
 function renderCart() {
   if (cart.length === 0) {
-    cartItemsWrap.innerHTML = '<p class="cart-empty">Tu carrito está vacío. Agrega productos de ECOVAS Multiusos.</p>';
+    cartItemsWrap.innerHTML = '<p class="cart-empty">Tu carrito está vacío. Agrega productos de las líneas ECOVAS.</p>';
   } else {
     cartItemsWrap.innerHTML = cart.map((item, i) => `
       <div class="cart-item">
+        ${item.image ? `<img class="cart-item__img" src="${item.image}" alt="">` : ''}
         <div class="cart-item__info">
           <strong>${item.name}</strong>
           <span>Cantidad: ${item.qty}</span>
@@ -359,9 +365,11 @@ document.querySelectorAll('[data-product]').forEach(card => {
 
   addBtn.addEventListener('click', () => {
     const name = card.dataset.product;
+    const imgEl = card.querySelector('img');
+    const image = imgEl ? imgEl.src : '';
     const existing = cart.find(item => item.name === name);
     if (existing) existing.qty += qty;
-    else cart.push({ name, qty });
+    else cart.push({ name, qty, image });
 
     qty = 1;
     if (stepperValue) stepperValue.textContent = qty;
