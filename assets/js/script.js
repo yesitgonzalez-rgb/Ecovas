@@ -247,6 +247,7 @@ const botTopics = {
 
 const botMessages = document.getElementById('botMessages');
 const botCta = document.getElementById('botCta');
+let activeLine = null;
 
 function addBotMessage(text, who) {
   const msg = document.createElement('p');
@@ -261,6 +262,11 @@ document.querySelectorAll('.bot-option[data-topic]').forEach(btn => {
     const topic = botTopics[btn.dataset.topic];
     document.querySelectorAll('.bot-option').forEach(b => b.classList.remove('is-selected'));
     btn.classList.add('is-selected');
+
+    if (activeLine !== null && btn.dataset.topic !== activeLine) {
+      botMessages.innerHTML = '';
+    }
+    activeLine = btn.dataset.topic;
 
     addBotMessage(topic.label, 'user');
     addBotMessage(topic.reply, 'bot');
