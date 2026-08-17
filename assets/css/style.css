@@ -212,9 +212,10 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 .slider__viewport--ad{aspect-ratio:1448/1086;border-radius:24px;box-shadow:var(--shadow-md);}
 
 /* Slider de linea de producto (reutilizable: Hogar ahora, Empresas e
-   Industria despues reusando el mismo patron con nuevas imagenes/ids). */
-.slider__viewport--linea{aspect-ratio:1448/1086;border-radius:24px;box-shadow:var(--shadow-md);}
-.linea-cta{text-align:center;margin-top:32px;}
+   Industria despues reusando el mismo patron con nuevas imagenes/ids).
+   Banners reales 1440x500 (3:1), igual que el Slider Premium del home. */
+.slider__viewport--linea{aspect-ratio:1440/500;border-radius:24px;box-shadow:var(--shadow-md);}
+.linea-cta{text-align:center;margin-bottom:32px;}
 
 /* Grid de tarjetas Premium vacias (reutilizable): solo la caja, sin
    contenido todavia. Se llena con imagen/titulo/descripcion/boton mas
@@ -479,6 +480,13 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 
 /* Use-case sections (Hogar / Oficina) */
 .usecase{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+/* Variante sin imagen (ej. #hogar tras retirar el banner de la modelo,
+   ya presente en el slider de arriba): una sola columna de texto,
+   centrada y con el mismo ancho de lectura que .section__head. */
+.usecase--solo{grid-template-columns:1fr;max-width:680px;margin:0 auto;}
+/* Texto introductorio arriba del slider de Hogar: mismo bloque .usecase--solo,
+   con separacion antes del slider en vez del margen inferior de seccion. */
+.hogar-slider__intro{margin-bottom:40px;}
 /* Bloques "Clientes que confian": varios .usecase apilados en una misma
    seccion necesitan su propio espaciado vertical (normalmente .usecase es
    el unico contenido de su seccion, con el padding:80px 0 de .section). */
