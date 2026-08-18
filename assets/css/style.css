@@ -561,6 +561,60 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
   #nuestro-heroe .mascota__media{padding:12px;}
 }
 
+/* Ticker informativo ECOVAS: franja tipo topbar (full-bleed, sin card ni
+   sombra) con marquee infinito en CSS puro. .ticker__track contiene DOS
+   copias identicas de .ticker__group una al lado de la otra; animar
+   translateX de 0 a -50% recorre exactamente el ancho de una copia, asi
+   que al terminar el loop la segunda copia ya esta pixel a pixel donde
+   arranco la primera — sin salto visible. Solo transform, sin JS. */
+.ticker{
+  background:linear-gradient(90deg,var(--navy-900),var(--cyan-600) 130%);
+  color:var(--white);
+  overflow:hidden;
+  height:68px;
+  display:flex;
+  align-items:center;
+}
+.ticker__track{
+  display:flex;
+  width:max-content;
+  animation:ticker-scroll 42s linear infinite;
+}
+.ticker__group{
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+}
+.ticker__item{
+  font-family:var(--font-head);
+  font-weight:700;
+  font-size:.95rem;
+  letter-spacing:.02em;
+  white-space:nowrap;
+}
+.ticker__sep{
+  color:var(--lime-400);
+  font-size:.5rem;
+  padding:0 22px;
+  flex-shrink:0;
+}
+@keyframes ticker-scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media (hover:hover){
+  .ticker:hover .ticker__track{animation-play-state:paused;}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker__track{animation:none;}
+}
+@media (max-width:640px){
+  .ticker{height:46px;}
+  .ticker__item{font-size:.72rem;}
+  .ticker__sep{padding:0 14px;font-size:.4rem;}
+  .ticker__track{animation-duration:30s;}
+}
+
 /* Coming soon line teaser */
 .line-teaser{
   background:linear-gradient(135deg,var(--cyan-600),var(--green-600));
