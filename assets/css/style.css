@@ -432,6 +432,11 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
 .cat-card__media--portrait{aspect-ratio:2/3;}
 /* Variante horizontal (4:3) para etiquetas/fichas de producto, ej. fragancias EcoFresh */
 .cat-card__media--landscape{aspect-ratio:4/3;}
+/* Las 6 tarjetas de EcoFresh Ambientadores usan la etiqueta completa del
+   producto (arte + info), proporcion real ~1200x729 (no 4:3) — override
+   scopeado para que llenen la caja sin letterbox, mismo patron que el
+   banner de esta misma seccion. */
+#cat-ambientadores .cat-card__media--landscape{aspect-ratio:1200/729;}
 .cat-card__img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s ease;}
 .cat-card:hover .cat-card__img{transform:scale(1.04);}
 .cat-card__tag{
