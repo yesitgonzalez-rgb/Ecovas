@@ -414,7 +414,7 @@ h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.2;color:v
   box-shadow:var(--shadow-md);margin-bottom:40px;
 }
 #cat-multiusos .cat-banner{aspect-ratio:16/9;}
-#cat-ambientadores .cat-banner{aspect-ratio:1440/590;}
+#cat-ambientadores .cat-banner{aspect-ratio:1831/859;}
 #cat-cuidado-personal > .container:first-child .cat-banner{aspect-ratio:1440/600;}
 #cat-estetica > .container:first-child .cat-banner{aspect-ratio:1440/600;}
 .cat-banner__img{width:100%;height:100%;object-fit:contain;display:block;}
